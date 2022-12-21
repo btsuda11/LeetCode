@@ -4,14 +4,16 @@
  * @return {number}
  */
 const searchInsert = (nums, target) => {
-    if (nums.length === 0) nums.push(target);
-    const mid = Math.floor(nums.length / 2);
-    if (nums[mid] > target) {
-        return searchInsert(nums.slice(0, mid), target);
-    } else if (nums[mid] < target) {
-        const subResult = searchInsert(nums.slice(mid + 1), target);
-        return subResult + mid + 1;
-    } else {
-        return mid;
+    let lo = 0, hi = nums.length - 1;
+    while (lo < hi) {
+        let mid = lo + Math.floor((hi - lo + 1) / 2);
+        if (target < nums[mid]) {
+            hi = mid - 1;
+        } else {
+            lo = mid;
+        }
     }
+    if (nums[lo] === target) return lo;
+    else if (nums[lo] < target) return lo + 1;
+    else return lo;
 };
