@@ -4,12 +4,14 @@
  * @return {number}
  */
 const search = (nums, target) => {
-    if (nums.length < 1) return -1;
-    const mid = Math.floor(nums.length / 2);
-    if (nums[mid] === target) return mid;
-    if (nums[mid] < target) {
-        const subResult = search(nums.slice(mid + 1), target);
-        return subResult === -1 ? -1 : mid + subResult + 1;
-    } 
-    if (nums[mid] > target) return search(nums.slice(0, mid), target);
+    let lo = 0, hi = nums.length - 1;
+    while (lo < hi) {
+        let mid = lo + Math.floor((hi - lo + 1) / 2);
+        if (target < nums[mid]) {
+            hi = mid - 1;
+        } else {
+            lo = mid;
+        }
+    }
+    return nums[lo] === target ? lo : -1;
 };
