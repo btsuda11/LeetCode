@@ -3,18 +3,18 @@
  * @param {character} target
  * @return {character}
  */
-var nextGreatestLetter = function (letters, target) {
-  if (letters[0] > target || target >= letters[letters.length - 1])
+const nextGreatestLetter = (letters, target) => {
+    if (letters[0] > target || target >= letters[letters.length - 1])
     return letters[0];
-
-  let left = 0,
-    right = letters.length - 1;
-
-  while (left < right) {
-    const mid = left + Math.floor((right - left) / 2);
-    if (letters[mid] <= target) left = mid + 1;
-    else if (letters[mid] > target) right = mid;
-  }
-
-  return letters[left];
+    
+    let lo = 0, hi = letters.length - 1;
+    while (lo < hi) {
+        let mid = lo + Math.floor((hi - lo) / 2);
+        if (letters[mid] <= target) {
+            lo = mid + 1;
+        } else {
+            hi = mid;
+        }
+    }
+    return letters[lo];
 };
