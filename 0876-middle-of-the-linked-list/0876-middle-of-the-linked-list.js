@@ -10,17 +10,10 @@
  * @return {ListNode}
  */
 const middleNode = head => {
-    const arr = [];
-    let copy = head;
-    while(copy !== null) {
-        arr.push(copy.val);
-        copy = copy.next;
+    let slow = head, fast = head;
+    while (fast !== null && fast.next !== null) {
+        slow = slow.next;
+        fast = fast.next.next;
     }
-    const mid = Math.floor(arr.length / 2);
-    let i = 0;
-    while(i !== mid) {
-        i++;
-        head = head.next;
-    }
-    return head;
+    return slow;
 };
