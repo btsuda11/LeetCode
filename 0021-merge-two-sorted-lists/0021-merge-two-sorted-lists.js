@@ -12,24 +12,18 @@
  */
 const mergeTwoLists = (list1, list2) => {
     let merged = new ListNode(0);
-    let currentNode = merged;
-    while(list1 !== null && list2 !== null) {
-        if(list1.val < list2.val){
-            currentNode.next = list1;
+    let copy = merged;
+    while (list1 !== null && list2 !== null) {
+        if (list1.val < list2.val) {
+            copy.next = list1;
             list1 = list1.next;
         } else {
-            currentNode.next = list2;
+            copy.next = list2;
             list2 = list2.next;
         }
-
-        currentNode = currentNode.next;
+        copy = copy.next;
     }
-
-    if(list1 !== null) {
-        currentNode.next = list1;
-    } else if (list2 !== null) {
-        currentNode.next = list2
-    }
-
+    if (list1 === null) copy.next = list2;
+    else if (list2 === null) copy.next = list1;
     return merged.next
 };
