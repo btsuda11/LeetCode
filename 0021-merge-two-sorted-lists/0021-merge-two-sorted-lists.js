@@ -25,5 +25,5 @@ const mergeTwoLists = (list1, list2) => {
     }
     if (list1 === null) prev.next = list2;
     else if (list2 === null) prev.next = list1;
-    return prehead.next
+    return prehead.next;
 };
