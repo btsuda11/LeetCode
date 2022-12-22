@@ -23,7 +23,6 @@ const mergeTwoLists = (list1, list2) => {
         }
         prev = prev.next;
     }
-    if (list1 === null) prev.next = list2;
-    else if (list2 === null) prev.next = list1;
+    prev.next = list1 || list2;
     return prehead.next;
 };
