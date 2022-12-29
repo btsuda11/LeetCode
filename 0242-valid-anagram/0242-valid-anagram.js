@@ -4,13 +4,13 @@
  * @return {boolean}
  */
 const isAnagram = (s, t) => {
-    const countS = {};
-    const countT = {};
+    const count = {};
     for(let i = 0; i < s.length; i++) {
-        countS[s[i]] = (countS[s[i]] || 0) + 1;
+        count[s[i]] = (count[s[i]] || 0) + 1;
     }
     for(let i = 0; i < t.length; i++) {
-        countT[t[i]] = (countT[t[i]] || 0) + 1;
+        if (count[t[i]]) count[t[i]]--;
+        else count[t[i]] = (count[t[i]] || 0) + 1;
     }
-    return _.isEqual(countS, countT);
+    return Object.values(count).every(num => num === 0);
 };
