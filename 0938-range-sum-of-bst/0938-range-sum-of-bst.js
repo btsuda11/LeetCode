@@ -17,8 +17,8 @@ const rangeSumBST = (root, low, high) => {
     const dfs = (root, low, high) => {
         if (!root) return;
         if (root.val >= low && root.val <= high) sum += root.val;
-        if (root.val > low) dfs(root.left, low, high);
-        if (root.val < high) dfs(root.right, low, high);
+        dfs(root.left, low, high);
+        dfs(root.right, low, high);
     }
     dfs(root, low, high);
     return sum;
