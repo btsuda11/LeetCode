@@ -12,14 +12,19 @@
  * @param {number} high
  * @return {number}
  */
-const rangeSumBST = (root, low, high) => {
+var rangeSumBST = function(root, low, high) {
     let sum = 0;
-    const dfs = (root, low, high) => {
-        if (!root) return;
-        if (root.val >= low && root.val <= high) sum += root.val;
-        if (root.val > low) dfs(root.left, low, high);
-        if (root.val < high) dfs(root.right, low, high);
+
+    let iterate = (node=root) =>{
+        if(!node) return;
+
+        iterate(node.left)
+
+        if(node.val>=low && node.val<=high) sum += node.val;
+
+        iterate(node.right)
     }
-    dfs(root, low, high);
+
+    iterate()
     return sum;
 };
