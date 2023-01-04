@@ -12,8 +12,5 @@
  */
 const invertTree = root => {
     if (!root) return null;
-    const temp = invertTree(root.right);
-    root.right = invertTree(root.left);
-    root.left = temp;
-    return root;
+    return new TreeNode(root.val, invertTree(root.right), invertTree(root.left));
 };
