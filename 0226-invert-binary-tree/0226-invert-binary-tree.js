@@ -11,14 +11,6 @@
  * @return {TreeNode}
  */
 const invertTree = root => {
-    const queue = [root];
-
-    while (queue.length) {
-        const n = queue.shift();
-        if (n != null) {
-            [n.left, n.right] = [n.right, n.left];
-            queue.push(n.left, n.right);
-        }
-    }
-    return root;
+    if (!root) return null;
+    return new TreeNode(root.val, invertTree(root.right), invertTree(root.left));
 };
