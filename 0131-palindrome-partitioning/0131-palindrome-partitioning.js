@@ -20,11 +20,11 @@ const partition = s => {
             return;
         }
         
-        for (let end = start + 1; end < s.length + 1; end++) {
-            const sub = s.substring(start, end);
+        for (let end = start; end < s.length; end++) {
+            const sub = s.substring(start, end + 1);
             if (isPalindrome(sub)) {
                 path.push(sub);
-                dfs(end, path);
+                dfs(end + 1, path);
                 path.pop();
             }
         }
