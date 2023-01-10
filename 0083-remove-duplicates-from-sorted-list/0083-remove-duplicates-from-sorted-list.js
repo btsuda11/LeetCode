@@ -10,15 +10,13 @@
  * @return {ListNode}
  */
 const deleteDuplicates = head => {
-    if (!head) return head;
-    let slow = head, fast = head, copy = slow;
-    while (fast) {
-        if (slow.val !== fast.val) {
-            slow = slow.next;
-            slow.val = fast.val;
+    let current = head;
+    while (current && current.next) {
+        if (current.val === current.next.val) {
+            current.next = current.next.next;
+        } else {
+            current = current.next;
         }
-        fast = fast.next;
     }
-    slow.next = null;
-    return copy;
+    return head;
 };
