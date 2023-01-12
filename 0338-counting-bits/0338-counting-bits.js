@@ -3,19 +3,12 @@
  * @return {number[]}
  */
 
-const count = x => {
-    let count = 0;
-    while (x !== 0) {
-        if (x & 1 === 1) count++;
-        x >>= 1;
-    }
-    return count;
-}
-
 const countBits = n => {
     let arr = new Array(n + 1);
-    for (let i = 0; i < arr.length; i++) {
-        arr[i] = count(i);
+    arr[0] = 0;
+    for (let i = 1; i < arr.length; i++) {
+        if (i % 2 === 0) arr[i] = arr[Math.floor(i / 2)];
+        else arr[i] = arr[Math.floor(i / 2)] + 1;
     }
     return arr;
 };
