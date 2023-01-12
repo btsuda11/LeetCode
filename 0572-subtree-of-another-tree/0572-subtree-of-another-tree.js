@@ -12,19 +12,16 @@
  * @return {boolean}
  */
 
-const isIdentical = (p, q) => {
-    if (!p && !q) return true;
-    if (!p && q || p && !q) return false;
-    if (p.val === q.val) {
-        return isIdentical(p.left, q.left) && isIdentical(p.right, q.right);
-    } else {
-        return false;
-    }
-}
-
-
 const isSubtree = (root, subRoot) => {
-    if (!root) return false;
-    if (isIdentical(root, subRoot)) return true;
-    return isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot);
+  const areEqual = (node1, node2) => {
+    if (!node1 || !node2) return !node1 && !node2;
+    if (node1.val !== node2.val) return false;
+    return areEqual(node1.left, node2.left) && areEqual(node1.right, node2.right);
+  }
+  const dfs = (node) => {
+    if (!node) return false;
+    if (areEqual(node, subRoot)) return true;
+    return dfs(node.left) || dfs(node.right);
+  }
+  return dfs(root);
 };
