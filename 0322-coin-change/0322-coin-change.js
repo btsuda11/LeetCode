@@ -9,7 +9,7 @@ const coinChange = (coins, amount) => {
     for (let i = 1; i < arr.length; i++) {
         arr[i] = Infinity;
         coins.forEach(amt => {
-            if (i >= amt) arr[i] = Math.min(arr[i], arr[i - amt]+1);
+            if (i >= amt) arr[i] = Math.min(arr[i], arr[i - amt] + 1);
         })
     }
     return arr[amount] === Infinity ? -1 : arr[amount];
