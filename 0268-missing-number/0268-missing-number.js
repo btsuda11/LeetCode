@@ -3,11 +3,10 @@
  * @return {number}
  */
 const missingNumber = nums => {
-    const set = new Set();
+    const n = nums.length;
+    let sum = n * (n + 1) / 2;
     for (let i = 0; i < nums.length; i++) {
-        set.add(nums[i]);
+        sum -= nums[i];
     }
-    for (let i = 0; i < nums.length + 1; i++) {
-        if (!set.has(i)) return i;
-    }
+    return sum;
 };
