@@ -2,7 +2,7 @@
  * @param {number[]} cost
  * @return {number}
  */
-var minCostClimbingStairs = function(cost) {
+const minCostClimbingStairs = cost => {
     const newArr = new Array(cost.length);
     if (cost.length === 1) return cost[0];
     if (cost.length === 2) return Math.min(cost[0], cost[1]);
