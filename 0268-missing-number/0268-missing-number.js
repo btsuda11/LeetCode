@@ -3,8 +3,11 @@
  * @return {number}
  */
 const missingNumber = nums => {
-    nums.sort((a, b) => a - b);
+    const set = new Set();
+    for (let i = 0; i < nums.length; i++) {
+        set.add(nums[i]);
+    }
     for (let i = 0; i < nums.length + 1; i++) {
-        if (i !== nums[i]) return i;
+        if (!set.has(i)) return i;
     }
 };
