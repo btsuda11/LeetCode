@@ -4,25 +4,33 @@
  */
 
 
-const longestPalindrome = s => {
-    const table = [...new Array(s.length + 1)].map(_ => new Array(s.length + 1).fill(false));
-    let longest = '';
-    
+var longestPalindrome = function (s) {
+    if (!s) return "";
+    if (s.length == 1) return s;
+
+    let start = 0;
+    let end = 0;
+
     for (let i = 0; i < s.length; i++) {
-        table[i][i] = true;
-        longest = s[i];
-    }
-    
-    for (let i = 0; i < s.length; i++) {
-        if (s[i] === s[i + 1]) table[i][i + 1] = true;
-        if (table[i][i + 1]) longest = s.substring(i, i + 2);
-    }
-    
-    for (let i = s.length - 1; i >= 0; i--) {
-        for (let j = i + 2; j < s.length; j++) {
-            table[i][j] = table[i + 1][j - 1] && s[i] === s[j];
-            if (table[i][j]) longest = longest.length < (j - i + 1) ? s.substring(i, j + 1) : longest;
+        const l1 = getLength(s, i, i);
+        const l2 = getLength(s, i, i + 1);
+
+        const len = Math.max(l1, l2);
+        if (len > end - start) {
+            start = Math.ceil(i - ((len - 1) / 2));
+            end = i + (len / 2);
         }
     }
-    return longest;
+    return s.substring(start, end + 1);
 };
+
+function getLength(str, left, right) {
+    if (!str || left > right) return 0;
+
+    while (left >= 0 && right < str.length && str[left] == str[right]) {
+        left--;
+        right++
+    }
+
+    return right - left - 1;
+}
