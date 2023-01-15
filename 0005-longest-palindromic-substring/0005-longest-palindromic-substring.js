@@ -4,33 +4,25 @@
  */
 
 
-var longestPalindrome = function (s) {
-    if (!s) return "";
-    if (s.length == 1) return s;
-
-    let start = 0;
-    let end = 0;
-
-    for (let i = 0; i < s.length; i++) {
-        const l1 = getLength(s, i, i);
-        const l2 = getLength(s, i, i + 1);
-
-        const len = Math.max(l1, l2);
-        if (len > end - start) {
-            start = Math.ceil(i - ((len - 1) / 2));
-            end = i + (len / 2);
+const longestPalindrome = s => {
+    let longest = '';
+    const findLongestPalindrome = (str, i, j) => {
+        while (i >= 0 && j < str.length && str[i] === str[j]) {
+            i -= 1;
+            j += 1;
         }
+        // slice the qualified substring from the second last iteration
+        return str.substring(i + 1, j);
     }
-    return s.substring(start, end + 1);
+    for (let i = 0; i < s.length; i++) {
+        // palindrome can center around 1 or 2 letters
+        const current1 = findLongestPalindrome(s, i, i);
+        const current2 = findLongestPalindrome(s, i, i + 1);
+        const longerPalindrome = 
+              current1.length > current2.length ? current1 : current2;
+        if (longerPalindrome.length > longest.length) {
+            longest = longerPalindrome;
+        } 
+    }
+    return longest;
 };
-
-function getLength(str, left, right) {
-    if (!str || left > right) return 0;
-
-    while (left >= 0 && right < str.length && str[left] == str[right]) {
-        left--;
-        right++
-    }
-
-    return right - left - 1;
-}
