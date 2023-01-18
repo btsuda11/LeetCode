@@ -16,7 +16,7 @@ const findWords = (board, words) => {
 
 };
 
-dfs = (node, row, col, board, res) => {
+const dfs = (node, row, col, board, res) => {
     if (node.end) {
       res.push(node.end);
       node.end = null;   // make sure only print one time for each word
