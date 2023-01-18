@@ -30,17 +30,3 @@ const flatten = head => {
     pseudoHead.next.prev = null
     return pseudoHead.next;
 };
-
-
-// some sort of recursion 
-// if curr pointer has a child, recursively flatten curr.child
-// if curr pointer does not have a child, curr = curr.next
-// loop thru while curr !== null
-
-// recursive function
-// rest = curr.next
-// curr.next = curr.child
-// within the child list, 
-//     last element of child's next pointer to rest node
-//     rest.prev = last element of the child
-// curr.child = null
