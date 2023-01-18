@@ -11,18 +11,11 @@ const validIPv4 = queryIP => {
     return components.every(component => 0 <= component && component <= 255);
 }
 
-const validIPv6 = (queryIP) => {
-  const tokens = queryIP.split(":");
-  if (tokens.length !== 8) {
-    return false;
-  }
-
-  if (!tokens.every((token) => /^[\da-fA-F]{1,4}$/.test(token))) {
-    return false;
-  }
-
-  return true;
-};
+const validIPv6 = queryIP => {
+    const tokens = queryIP.split(':');
+    if (tokens.length !== 8) return false;
+    return tokens.every(token => /^[\da-fA-F]{1,4}$/.test(token));
+}
 
 const validIPAddress = queryIP => {
     if (validIPv4(queryIP)) return 'IPv4';
