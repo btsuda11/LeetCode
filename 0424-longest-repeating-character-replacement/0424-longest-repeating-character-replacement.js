@@ -3,22 +3,15 @@
  * @param {number} k
  * @return {number}
  */
-
-const mostFreqCount = map => {
-    let count = 0;
-    Object.values(map).forEach(num => {
-      count = Math.max(count, num);  
-    })
-    return count;
-}
-
 const characterReplacement = (s, k) => {
+    let mostFreqCount = 0;
     let longest = 0;
     let l = 0;
     let count = {};
     for (let r = 0; r < s.length; r++) {
         count[s[r]] = count[s[r]] + 1 || 1;
-        if (r - l + 1 - mostFreqCount(count) > k) {
+        mostFreqCount = Math.max(mostFreqCount, count[s[r]]);
+        if (r - l + 1 - mostFreqCount > k) {
             count[s[l]] -= 1;
             l++;
         }
