@@ -4,12 +4,13 @@
  */
 const findDisappearedNumbers = nums => {
     const res = [];
-    const set = new Set();
     for (let i = 0; i < nums.length; i++) {
-        set.add(nums[i]);
+        const curr = Math.abs(nums[i]);
+        if (nums[curr - 1] > 0) nums[curr - 1] *= -1;
     }
-    for (let i = 1; i < nums.length + 1; i++) {
-        if (!set.has(i)) res.push(i);
+    console.log(nums)
+    for (let i = 1; i <= nums.length; i++) {
+        if (nums[i - 1] > 0) res.push(i);
     }
     return res;
 };
