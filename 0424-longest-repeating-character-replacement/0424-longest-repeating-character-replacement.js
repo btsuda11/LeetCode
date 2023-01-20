@@ -18,7 +18,7 @@ const characterReplacement = (s, k) => {
     let count = {};
     for (let r = 0; r < s.length; r++) {
         count[s[r]] = count[s[r]] + 1 || 1;
-        while (r - l + 1 - mostFreqCount(count) > k) {
+        if (r - l + 1 - mostFreqCount(count) > k) {
             count[s[l]] -= 1;
             l++;
         }
