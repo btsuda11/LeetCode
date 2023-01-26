@@ -9,12 +9,10 @@ const numIslands = grid => {
     const n = grid[0].length;
 
     const dfs = (row, col) => {
-
-
-        if (row < 0 || row >= m || col < 0 || col >= n) return false;
-                const val = grid[row][col];
-        if (val === '0' || val === 'x') return false;
-        grid[row][col] = 'x'
+        if (row < 0 || row >= m || col < 0 || col >= n) return;
+        const val = grid[row][col];
+        if (val === '0' || val === 'x') return;
+        grid[row][col] = 'x';
         dfs(row + 1, col);
         dfs(row - 1, col);
         dfs(row, col + 1);
