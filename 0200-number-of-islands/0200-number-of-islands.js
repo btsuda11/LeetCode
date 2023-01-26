@@ -3,29 +3,30 @@
  * @return {number}
  */
 
-const dfs = (grid, r, c) => {
-    const rows = grid.length;
-    const cols = grid[0].length;
-    if (r < 0 || c < 0 || r >= rows || c >= cols || grid[r][c] === '0') return;
-    grid[r][c] = '0';
-    dfs(grid, r - 1, c);
-    dfs(grid, r, c - 1);
-    dfs(grid, r + 1, c);
-    dfs(grid, r, c + 1);
-}
-
 const numIslands = grid => {
-    if (!grid || grid.length === 0) return 0;
     let count = 0;
-    const rows = grid.length;
-    const cols = grid[0].length;
-    for (let r = 0; r < rows; r++) {
-        for (let c = 0; c < cols; c++) {
-            if (grid[r][c] === '1') {
-                count++;
-                dfs(grid, r, c);
-            }
+    const m = grid.length;
+    const n = grid[0].length;
+
+    const dfs = (row, col) => {
+
+
+        if (row < 0 || row >= m || col < 0 || col >= n) return false;
+                const val = grid[row][col];
+        if (val === '0' || val === 'x') return false;
+        grid[row][col] = 'x'
+        dfs(row + 1, col);
+        dfs(row - 1, col);
+        dfs(row, col + 1);
+        dfs(row, col - 1);
+        return true;
+    }
+
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            if (dfs(i, j)) count++;
         }
     }
+
     return count;
 };
