@@ -3,29 +3,41 @@
  * @param {string[]} wordDict
  * @return {boolean}
  */
-const wordBreak = (s, wordDict, memo = {}) => { // Default arg which is our memo object #####
-	// We break down the word each recursive call
-	// Base case is the broken down word becomes an empty string, which means we found a path
-    if (!s) return true;
-    if (s in memo) return memo[s]; // Base case to avoid extra computation #####
-    // ^^ Will be hit if we already computated this word
+var wordBreak = function(s, wordDict) {
+    // Initiate the start index to run the loop
+    let start = 0;
     
-	// We need to loop everyword in the wordDict
-    for (let word of wordDict) {
-		// indexOf will give us the prefix START of the word we pass in
-        // So if s.indexOf(word) is 0, we know the word is the prefix
-        if(s.indexOf(word) === 0) {
-			// If they match, we continue our recursion
-			// We pass in the NEW s with the word sliced from the prefix, we also need to pass wordDict
-			// If we ever hit our base case, this will evaluate to true and return true overall
-            if(wordBreak(s.slice(word.length), wordDict, memo)) { // Remeber to pass down memo #####
-                memo[s] = true; // Save our computation #####
-                return true;
-            }
-        }
+    // Create a memo array
+    const memo = new Array(s.length);
+    // Create a wordDic Set * not necessary we can use array itself
+    let wordSet = new Set(wordDict);
+    
+    //Recursive functions
+    return wordBreakRecursive(s, wordSet, start, memo);
+};
+
+function wordBreakRecursive(s, wordSet, start, memo) {
+    
+    // Check for memo value
+    // If memo value exist than we can directly keep the recursive and return the value so that we don't need to repeat the recursive path where we already pass
+    if(memo[start] !== undefined) {
+        return memo[start];
     }
     
-	// If we never make it to a base case, we have no answers
-    memo[s] = false; // Save our computation #####
-    return false;
-};
+    // Check for the start and s.length
+    if(start == s.length) {
+        return true
+    }
+    
+    // run the loop from start + 1 because last index of previous recursive plus + 1 to move forward
+    // ex - leet which ends at index 3 so to run the loop which should start at code which is index 4 
+    for(let end = start + 1; end <= s.length; end++) {
+        
+        // Check for substring exist in word Dic and also check for recursive return true where we pass end index which is start of recursive function
+        if(wordSet.has(s.substring(start, end)) && wordBreakRecursive(s, wordSet, end, memo)) {
+            return memo[start] = true;
+        }
+    }
+    // Return the memo for start index if did not match
+    return memo[start] = false;
+}
