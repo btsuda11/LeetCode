@@ -6,12 +6,12 @@
 const wordBreak = (s, wordDict, memo = {}) => { // Default arg which is our memo object #####
 	// We break down the word each recursive call
 	// Base case is the broken down word becomes an empty string, which means we found a path
-    if(!s) return true;
-    if(s in memo) return memo[s]; // Base case to avoid extra computation #####
+    if (!s) return true;
+    if (s in memo) return memo[s]; // Base case to avoid extra computation #####
     // ^^ Will be hit if we already computated this word
     
 	// We need to loop everyword in the wordDict
-    for(let word of wordDict) {
+    for (let word of wordDict) {
 		// indexOf will give us the prefix START of the word we pass in
         // So if s.indexOf(word) is 0, we know the word is the prefix
         if(s.indexOf(word) === 0) {
