@@ -9,5 +9,4 @@ const majorityElement = nums => {
         map[nums[i]] = map[nums[i]] + 1 || 1;
         if (map[nums[i]] === freq) return nums[i];
     }
-    console.log(freq)
 };
