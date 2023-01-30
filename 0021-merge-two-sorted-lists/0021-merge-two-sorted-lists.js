@@ -10,19 +10,19 @@
  * @param {ListNode} list2
  * @return {ListNode}
  */
-const mergeTwoLists = (list1, list2) => {
-    let prehead = new ListNode(0);
-    let prev = prehead;
-    while (list1 !== null && list2 !== null) {
-        if (list1.val < list2.val) {
-            prev.next = list1;
-            list1 = list1.next;
+const mergeTwoLists = (a, b) => {
+    let dummy = new ListNode(0);
+    let curr = dummy;
+    while (a && b) {
+        if (a.val < b.val) {
+            curr.next = a;
+            a = a.next;
         } else {
-            prev.next = list2;
-            list2 = list2.next;
+            curr.next = b;
+            b = b.next;
         }
-        prev = prev.next;
+        curr = curr.next;
     }
-    prev.next = list1 || list2;
-    return prehead.next;
+    a ? curr.next = a : curr.next = b;
+    return dummy.next;
 };
