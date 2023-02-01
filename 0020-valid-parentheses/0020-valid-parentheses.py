@@ -1,13 +1,16 @@
 class Solution:
-    def isValid(self, s):
-        bracket_map = {"(": ")", "[": "]",  "{": "}"}
-        open_par = set(["(", "[", "{"])
+    def isValid(self, s: str) -> bool:
         stack = []
-        for i in s:
-            if i in open_par:
-                stack.append(i)
-            elif stack and i == bracket_map[stack[-1]]:
-                    stack.pop()
+        for char in s:
+            if len(stack) == 0:
+                stack.append(char)
+            elif char == ')' and stack[-1] == '(':
+                stack.pop()
+            elif char == ']' and stack[-1] == '[':
+                stack.pop()
+            elif char == '}' and stack[-1] == '{':
+                stack.pop()
             else:
-                return False
-        return stack == []
+                stack.append(char)
+        return len(stack) == 0
+            
