@@ -8,4 +8,3 @@ class Solution:
                 return False
         vals = map.values()
         return len(set(vals)) == len(vals)
-            
