@@ -1,13 +1,13 @@
 class Solution:
     def isSubsequence(self, s: str, t: str) -> bool:
-        pointS = 0
-        pointT = 0
-        if len(s) == 0:
-            return True
-        while pointS < len(s):
-            if pointT >= len(t):
-                return False
-            if s[pointS] == t[pointT]:
-                pointS += 1
-            pointT += 1
-        return pointS >= len(s)
+        ptr_s = 0
+        if len(s)==0: return True
+
+        for i in range(len(t)):
+            if s[ptr_s] == t[i]:
+                ptr_s += 1
+
+            if ptr_s == len(s): 
+                return True
+
+        return False
