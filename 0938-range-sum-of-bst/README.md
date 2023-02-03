@@ -3,17 +3,17 @@
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
 <img alt="" src="https://assets.leetcode.com/uploads/2020/11/05/bst1.jpg" style="width: 400px; height: 222px;">
-<pre style="position: relative;"><strong>Input:</strong> root = [10,5,15,3,7,null,18], low = 7, high = 15
+<pre><strong>Input:</strong> root = [10,5,15,3,7,null,18], low = 7, high = 15
 <strong>Output:</strong> 32
 <strong>Explanation:</strong> Nodes 7, 10, and 15 are in the range [7, 15]. 7 + 10 + 15 = 32.
-<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
+</pre>
 
 <p><strong class="example">Example 2:</strong></p>
 <img alt="" src="https://assets.leetcode.com/uploads/2020/11/05/bst2.jpg" style="width: 400px; height: 335px;">
-<pre style="position: relative;"><strong>Input:</strong> root = [10,5,15,3,7,13,18,1,null,6], low = 6, high = 10
+<pre><strong>Input:</strong> root = [10,5,15,3,7,13,18,1,null,6], low = 6, high = 10
 <strong>Output:</strong> 23
 <strong>Explanation:</strong> Nodes 6, 7, and 10 are in the range [6, 10]. 6 + 7 + 10 = 23.
-<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
+</pre>
 
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
