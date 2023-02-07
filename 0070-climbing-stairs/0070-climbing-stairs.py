@@ -9,5 +9,4 @@ class Solution:
         while i < n:
             arr[i] = arr[i - 1] + arr[i - 2]
             i += 1
-        print(arr)
         return arr[-1]
