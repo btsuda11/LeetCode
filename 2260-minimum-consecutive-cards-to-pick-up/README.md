@@ -5,17 +5,17 @@
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
 
-<pre><strong>Input:</strong> cards = [3,4,2,3,4,7]
+<pre style="position: relative;"><strong>Input:</strong> cards = [3,4,2,3,4,7]
 <strong>Output:</strong> 4
 <strong>Explanation:</strong> We can pick up the cards [3,4,2,3] which contain a matching pair of cards with value 3. Note that picking up the cards [4,2,3,4] is also optimal.
-</pre>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
 
 <p><strong class="example">Example 2:</strong></p>
 
-<pre><strong>Input:</strong> cards = [1,0,5,3]
+<pre style="position: relative;"><strong>Input:</strong> cards = [1,0,5,3]
 <strong>Output:</strong> -1
 <strong>Explanation:</strong> There is no way to pick up a set of consecutive cards that contain a pair of matching cards.
-</pre>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
 
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
