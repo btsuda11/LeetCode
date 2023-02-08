@@ -29,16 +29,3 @@ class Solution:
             if node.right:
                 q.append((node.right, False))
         return curr_sum
-        
-        #     3
-        #     /\
-        #     9  20
-        # /   \   /   \
-        # 12  5 7   15
-        
-        #      1
-        #     / \
-        #     n  2
-        
-# define a bfs function that will take in a node
-# traverse level by level and check if the current node is a leaf and if it is an even index on the current level
