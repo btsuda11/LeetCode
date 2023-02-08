@@ -18,16 +18,17 @@ class Solution:
         # return dfs(root)
         
         
-        q, ans = deque([(root, False)]), 0
-        while q:
-            cur, isLeft = q.popleft()
-            if not cur.left and not cur.right and isLeft:
-                ans = ans + cur.val
-            if cur.right:
-                q.append((cur.right, False))
-            if cur.left: 
-                q.append((cur.left, True))
-        return ans
+        curr_sum = 0
+        q = deque([(root, False)])        
+        while q:   
+            node, isLeft = q.popleft()
+            if isLeft and (node.left == None and node.right == None):
+                curr_sum += node.val
+            if node.left:
+                q.append((node.left, True))
+            if node.right:
+                q.append((node.right, False))
+        return curr_sum
         
         #     3
         #     /\
