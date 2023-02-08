@@ -8,34 +8,26 @@ from collections import deque
 
 class Solution:
     def sumOfLeftLeaves(self, root: Optional[TreeNode]) -> int:
-        def dfs(root):
-            if root == None:
-                return 0
-            if root.left and root.left.left == None and root.left.right == None:
-                return root.left.val + dfs(root.right)
-            else:
-                return dfs(root.left) + dfs(root.right)
-        return dfs(root)
+        # def dfs(root):
+        #     if root == None:
+        #         return 0
+        #     if root.left and root.left.left == None and root.left.right == None:
+        #         return root.left.val + dfs(root.right)
+        #     else:
+        #         return dfs(root.left) + dfs(root.right)
+        # return dfs(root)
         
         
-        
-        
-#         curr_sum = 0
-#         if root.left == None:
-#             return curr_sum
-#         q = deque([root])        
-#         while len(q) > 0:             
-#             length = len(q)            
-                                         
-#             for i in range(length):
-#                 node = q.popleft()      
-#                 if i % 2 == 0 and (node.left == None and node.right == None):
-#                     curr_sum += node.val
-#                 if node.left:
-#                     q.append(node.left)
-#                 if node.right:
-#                     q.append(node.right)
-#         return curr_sum
+        q, ans = deque([(root, False)]), 0
+        while q:
+            cur, isLeft = q.popleft()
+            if not cur.left and not cur.right and isLeft:
+                ans = ans + cur.val
+            if cur.right:
+                q.append((cur.right, False))
+            if cur.left: 
+                q.append((cur.left, True))
+        return ans
         
         #     3
         #     /\
