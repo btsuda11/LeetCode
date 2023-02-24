@@ -10,7 +10,6 @@ class Solution:
         interval = intervals[0]
         right = 1
         while right < len(intervals):
-            print(interval)
             second = intervals[right]
             if overlap(interval, second):
                 return False
