@@ -12,7 +12,6 @@ class Solution:
             curr = curr.next
         nthFromEnd = length - n + 1
         prev, curr = None, head
-        print(nthFromEnd)
         while i + 1 != nthFromEnd:
             temp = curr.next
             prev = curr
