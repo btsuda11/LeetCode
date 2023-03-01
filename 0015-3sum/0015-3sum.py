@@ -3,13 +3,14 @@ class Solution:
         left = i + 1
         right = len(nums) - 1
         while left < right:
-            if nums[i] + nums[left] + nums[right] == 0:
+            sum = nums[i] + nums[left] + nums[right]
+            if sum == 0:
                 res.append([nums[i], nums[left], nums[right]])
                 left += 1
                 right -= 1
                 while left < right and nums[left] == nums[left - 1]:
                     left += 1
-            elif nums[i] + nums[left] + nums[right] > 0:
+            elif sum > 0:
                 right -= 1
             else:
                 left += 1
