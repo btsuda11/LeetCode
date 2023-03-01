@@ -16,13 +16,10 @@ class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         res = []
         nums.sort()
-        pivot = 0
         
-        while pivot < len(nums):
-            totalSum = nums[pivot]
-            if totalSum > 0:
+        for i in range(len(nums)):
+            if nums[i] > 0:
                 break
-            if pivot == 0 or nums[pivot] != nums[pivot - 1]:
-                self.twoSum(nums, pivot, res)
-            pivot += 1
+            if i == 0 or nums[i] != nums[i - 1]:
+                self.twoSum(nums, i, res)
         return res
