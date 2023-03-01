@@ -24,11 +24,3 @@ const isPalindrome = head => {
     }
     return true;
 };
-
-
-
-// 1. reverse the linked list
-// 2. store the reversed version
-// 3. iterate through the reversed and original version
-// 4. compare each value at each node and if all are the same, return true
-// 5. return false otherwise
