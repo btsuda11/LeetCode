@@ -2,24 +2,23 @@ class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         res = []
         nums.sort()
-        for i in range(len(nums)):
-            if nums[i] > 0:
+        pivot = 0
+        left = 1
+        right = len(nums) - 1
+        while pivot < len(nums):
+            totalSum = nums[pivot]
+            if totalSum > 0:
                 break
-            if i == 0 or nums[i - 1] != nums[i]:
-                self.twoSumII(nums, i, res)
+            while left < right:
+                if totalSum + nums[left] + nums[right] == 0 and [nums[pivot], nums[left], nums[right]] not in res:
+                    res.append([nums[pivot], nums[left], nums[right]])
+                    left += 1
+                    right -= 1
+                elif totalSum + nums[left] + nums[right] > 0:
+                    right -= 1
+                else:
+                    left += 1
+            pivot += 1
+            left = pivot + 1
+            right = len(nums) - 1
         return res
-
-    def twoSumII(self, nums: List[int], i: int, res: List[List[int]]):
-        lo, hi = i + 1, len(nums) - 1
-        while (lo < hi):
-            sum = nums[i] + nums[lo] + nums[hi]
-            if sum < 0:
-                lo += 1
-            elif sum > 0:
-                hi -= 1
-            else:
-                res.append([nums[i], nums[lo], nums[hi]])
-                lo += 1
-                hi -= 1
-                while lo < hi and nums[lo] == nums[lo - 1]:
-                    lo += 1
