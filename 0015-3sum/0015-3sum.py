@@ -1,24 +1,28 @@
 class Solution:
+    def twoSum(self, nums: List[int], i: int, res: List[List[int]]):
+        left = i + 1
+        right = len(nums) - 1
+        while left < right:
+            if nums[i] + nums[left] + nums[right] == 0:
+                res.append([nums[i], nums[left], nums[right]])
+                left += 1
+                right -= 1
+                while left < right and nums[left] == nums[left - 1]:
+                    left += 1
+            elif nums[i] + nums[left] + nums[right] > 0:
+                right -= 1
+            else:
+                left += 1
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         res = []
         nums.sort()
         pivot = 0
-        left = 1
-        right = len(nums) - 1
+        
         while pivot < len(nums):
             totalSum = nums[pivot]
             if totalSum > 0:
                 break
-            while left < right:
-                if totalSum + nums[left] + nums[right] == 0 and [nums[pivot], nums[left], nums[right]] not in res:
-                    res.append([nums[pivot], nums[left], nums[right]])
-                    left += 1
-                    right -= 1
-                elif totalSum + nums[left] + nums[right] > 0:
-                    right -= 1
-                else:
-                    left += 1
+            if pivot == 0 or nums[pivot] != nums[pivot - 1]:
+                self.twoSum(nums, pivot, res)
             pivot += 1
-            left = pivot + 1
-            right = len(nums) - 1
         return res
