@@ -16,8 +16,7 @@ class Solution:
             dfs(r - 1, c, visited, heights[r][c])
             dfs(r, c + 1, visited, heights[r][c])
             dfs(r, c - 1, visited, heights[r][c])
-            
-            
+             
         for i in range(m):
             dfs(i, 0, pac, heights[i][0])
             dfs(i, n - 1, atl, heights[i][n - 1])
@@ -25,6 +24,5 @@ class Solution:
         for j in range(n):
             dfs(0, j, pac, heights[0][j])
             dfs(m - 1, j, atl, heights[m - 1][j])
-
-                    
+      
         return list(pac & atl)
