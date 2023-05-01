@@ -7,6 +7,5 @@ class Solution:
                 count += 1
                 [[nums[l], nums[r]]] = [[nums[r], nums[l]]]
                 l += 1
-                print(nums)
         return count
                 
