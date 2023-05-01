@@ -1,10 +1,10 @@
 class Solution:
     def average(self, salary: List[int]) -> float:
-        min_salary = min(salary)
-        max_salary = max(salary)
-        average, count = 0, 0
+        min_salary = math.inf
+        max_salary = -math.inf
+        sum_sal = 0
         for sal in salary:
-            if sal != min_salary and sal != max_salary:
-                average += sal
-                count += 1
-        return average / count
+            sum_sal += sal
+            min_salary = min(min_salary, sal)
+            max_salary = max(max_salary, sal)
+        return (sum_sal - min_salary - max_salary) / (len(salary) - 2)
